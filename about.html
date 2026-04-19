@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — TriviaGrid</title>
+<meta name="description" content="Learn about TriviaGrid — a free trivia review game built for teachers by someone who cares about education technology that actually works in the classroom.">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#060CE9;--gold:#FFD700;--gold-glow:#FFE44D;--cream:#FFF8DC;--dark:#020318;--mid:#0c1580}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--dark);font-family:'Roboto Condensed',sans-serif;color:#fff;line-height:1.75;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{background:rgba(2,3,24,.97);border-bottom:2px solid rgba(255,215,0,.25);padding:0 5%;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;height:60px}
+.nav-logo{font-family:'Anton',sans-serif;font-size:22px;color:var(--gold);text-shadow:2px 2px 0 #7a5900;letter-spacing:3px;white-space:nowrap}
+.nav-logo span{font-family:'Roboto Condensed',sans-serif;font-size:11px;letter-spacing:4px;color:rgba(255,248,220,.5);display:block;margin-top:-4px}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:rgba(255,255,255,.7);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);text-decoration:none}
+.nav-cta{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:8px 22px;background:linear-gradient(135deg,#FFE566,#FFD700 45%,#C8960A);color:#1a0a00;border-radius:6px;transition:all .15s}
+.nav-cta:hover{text-decoration:none;transform:translateY(-1px)}
+.ad-bar{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,215,0,.08);border-bottom:1px solid rgba(255,215,0,.08);padding:10px;display:flex;justify-content:center}
+.ad-slot{background:rgba(255,255,255,.03);border:1px dashed rgba(255,215,0,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative}
+.ad-slot::before{content:'Advertisement';position:absolute;top:3px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);white-space:nowrap;font-family:'Roboto Condensed',sans-serif}
+.ad-leaderboard{width:728px;height:90px;max-width:100%}
+.ad-ph{display:flex;align-items:center;justify-content:center;opacity:.12;width:100%;height:100%;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;color:var(--gold)}
+.page-hero{background:radial-gradient(ellipse at 50% 0%,var(--mid),var(--dark) 65%);padding:60px 5% 52px;text-align:center}
+.page-hero h1{font-family:'Anton',sans-serif;font-size:clamp(40px,7vw,72px);color:var(--gold);text-shadow:4px 4px 0 #7a5900;letter-spacing:4px;margin-bottom:14px}
+.page-hero p{font-size:18px;font-weight:300;color:rgba(255,255,255,.75);max-width:600px;margin:0 auto}
+.content-wrap{max-width:820px;margin:0 auto;padding:64px 5%}
+.content-wrap h2{font-family:'Anton',sans-serif;font-size:clamp(28px,4vw,42px);color:var(--gold);text-shadow:2px 2px 0 #7a5900;letter-spacing:3px;margin:52px 0 18px}
+.content-wrap h2:first-child{margin-top:0}
+.content-wrap h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--cream);margin:32px 0 12px}
+.content-wrap p{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);margin-bottom:16px;line-height:1.85}
+.content-wrap ul{padding-left:22px;margin-bottom:18px}
+.content-wrap li{font-size:17px;font-weight:300;color:rgba(255,255,255,.7);margin-bottom:10px;line-height:1.75}
+.content-wrap strong{color:var(--cream);font-weight:700}
+.mission-card{background:linear-gradient(135deg,rgba(6,12,200,.25),rgba(6,12,100,.2));border:1px solid rgba(255,215,0,.3);border-radius:16px;padding:32px 36px;margin:36px 0;position:relative;overflow:hidden}
+.mission-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+.mission-card h3{font-family:'Anton',sans-serif;font-size:28px;color:var(--gold);letter-spacing:3px;margin-bottom:14px}
+.mission-card p{font-size:17px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.85;margin:0}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:28px 0}
+.value-card{background:rgba(6,12,200,.15);border:1px solid rgba(255,215,0,.18);border-radius:12px;padding:22px 20px}
+.vc-icon{font-size:28px;margin-bottom:10px;display:block}
+.vc-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+.vc-body{font-size:14px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7}
+.timeline{border-left:2px solid rgba(255,215,0,.3);padding-left:28px;margin:28px 0;display:flex;flex-direction:column;gap:28px}
+.tl-item{position:relative}
+.tl-item::before{content:'';width:10px;height:10px;background:var(--gold);border-radius:50%;position:absolute;left:-34px;top:6px;box-shadow:0 0 8px rgba(255,215,0,.5)}
+.tl-year{font-family:'Anton',sans-serif;font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:4px}
+.tl-body{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.7}
+footer{background:#010215;border-top:1px solid rgba(255,215,0,.1);padding:32px 5%;text-align:center}
+footer p{font-size:13px;color:rgba(255,255,255,.3);margin-bottom:8px}
+footer a{color:rgba(255,215,0,.5);font-size:13px}
+footer a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" style="text-decoration:none">TriviaGrid<span>Classroom Edition</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-to-use.html">How to Use</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="triviagrid.html" class="nav-cta">▶ Play Now</a>
+  </div>
+</nav>
+<div class="ad-bar"><div class="ad-slot ad-leaderboard"><div class="ad-ph">728 × 90 — Leaderboard Ad</div></div></div>
+<div class="page-hero">
+  <h1>About Us</h1>
+  <p>Why we built TriviaGrid, and what we believe about education technology.</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="mission-card">
+    <h3>Our Mission</h3>
+    <p>To give every teacher a powerful, polished, and completely free review game that makes students genuinely excited to learn — with zero barriers to getting started.</p>
+  </div>
+
+  <h2>Why We Built This</h2>
+  <p>Every teacher has been there. You find a trivia game template online, spend 20 minutes downloading it, discover it requires an old version of PowerPoint, fiddle with broken macros, and eventually give up and use a Google Form instead. Or you find a web-based version that looks terrible, crashes when you fullscreen it, or locks basic features behind a monthly subscription.</p>
+  <p>TriviaGrid started as a simple frustration fix — what if there was a trivia review game for teachers that was genuinely beautiful, actually reliable, and completely free? One that looked like it belonged on a real TV studio board, not a 2004 PowerPoint template?</p>
+  <p>We built it. Then we kept adding features that teachers actually asked for: custom questions that save automatically, a Daily Challenge for individual students, a proper Final Round with wagering, support for up to 8 teams, Daily Double randomization, and a Daily Challenge that publishes a brand-new puzzle every single day.</p>
+  <p>The result is a tool we are genuinely proud of — and we want to keep it free and keep making it better.</p>
+
+  <h2>What We Believe</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="vc-icon">🆓</span>
+      <div class="vc-title">Free Should Mean Free</div>
+      <div class="vc-body">No paywalls. No "premium" features. No login required. Every teacher deserves access to great tools regardless of their school's budget.</div>
+    </div>
+    <div class="value-card">
+      <span class="vc-icon">⚡</span>
+      <div class="vc-title">It Should Just Work</div>
+      <div class="vc-body">Open a browser. Click Play. Done. No installation, no plugins, no admin permissions, no setup wizard. A teacher in the middle of class cannot troubleshoot technology.</div>
+    </div>
+    <div class="value-card">
+      <span class="vc-icon">🎨</span>
+      <div class="vc-title">Design Matters</div>
+      <div class="vc-body">Students notice when tools look good. A polished, TV-quality game board generates genuine excitement — and excited students pay attention and retain more.</div>
+    </div>
+    <div class="value-card">
+      <span class="vc-icon">🔒</span>
+      <div class="vc-title">Privacy First</div>
+      <div class="vc-body">We do not collect student data. All game progress lives in the browser. We are committed to being a tool parents and administrators can trust in any school environment.</div>
+    </div>
+  </div>
+
+  <h2>How the Site Works</h2>
+  <p>TriviaGrid is a single-file web application — everything runs in your browser with no server-side processing of game data. Your custom questions, scores, and daily streaks are all stored locally using your browser's localStorage. Nothing gameplay-related is ever transmitted to our servers.</p>
+  <p>The Daily Challenge system publishes a brand-new puzzle every day, curated by the TriviaGrid team. Each daily puzzle covers two full rounds of questions plus a Final Round wager — just open the game and today's challenge loads automatically.</p>
+  <p>The site is supported by display advertising. Ads are served by third-party ad networks (such as Google AdSense) and follow standard industry practices. We do not sell or share any personal data. Please see our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+
+  <h2>The Technology</h2>
+  <p>TriviaGrid is built entirely with HTML, CSS, and vanilla JavaScript — no frameworks, no dependencies, no build process. This is a deliberate choice: it means the game loads instantly, works without a reliable internet connection after the first load, runs on any device in any browser, and will continue working even if every JavaScript framework and tool we could have used gets deprecated.</p>
+  <p>The game is designed to work on the devices teachers and students actually have — aging Windows laptops, Chromebooks, school-issued iPads, and the occasionally temperamental projector computer. We test on all of them.</p>
+
+    <h2>Contact Us</h2>
+  <p>We love hearing from teachers. Whether you have found a bug, have a feature request, or just want to share how your class reacted — we genuinely want to know. Visit our <a href="contact.html">Contact page</a> to get in touch.</p>
+
+</div>
+
+<div class="ad-bar"><div class="ad-slot ad-leaderboard"><div class="ad-ph">728 × 90 Ad</div></div></div>
+<footer>
+  <p>© 2026 TriviaGrid</p>
+  <div style="display:flex;gap:16px;justify-content:center;margin-top:6px">
+    <a href="index.html">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
